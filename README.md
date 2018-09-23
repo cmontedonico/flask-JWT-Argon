@@ -44,7 +44,31 @@ http://0.0.0.0:8080
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+In production i suggest to use NGINX wiht uWSGI as a service.
+
+```
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /var/www/flask-JWT-Argon/app_nginx.conf /etc/nginx/conf.d
+sudo mkdir -p /var/log/uwsgi
+sudo chown ubuntu:www-data /var/log/uwsgi
+sudo chmod g+w /var/log/uwsgi
+```
+
+Restart nginx, and start uWSGI with our config file (delete the log file after to avoid a permissions issue in the next step).
+```
+sudo /etc/init.d/nginx restart
+rm /var/log/uwsgi/demoapp_uwsgi.log
+uwsgi --ini /var/www/flask-JWT-Argon/app_uwsgi.ini
+```
+
+Now, visiting the IP address should show our Flask app. However, we want uWSGI to run as a background service, using uWSGI Emperor and systemd. We set up new directories and config files to do so.
+```
+sudo mkdir -p /etc/uwsgi/vassals
+sudo ln -s /var/www/flask-JWT-Argon/app_uwsgi.ini /etc/uwsgi/vassals
+sudo cp uwsgi.service /etc/systemd/system
+sudo systemctl enable uwsgi
+sudo systemctl start uwsgi
+```
 
 ## Built With
 
