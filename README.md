@@ -1,4 +1,4 @@
-# Flask / Python3 / JWT / Argon2
+# Flask / Python3 / JWT / Argon2 / MySQL 8 / Nginx / uWSGI
 
 This project is a simple template to perform signup and login with flask on python3
 
