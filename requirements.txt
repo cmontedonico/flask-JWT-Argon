@@ -1,0 +1,7 @@
+flask
+uWSGI
+flask-argon2
+Flask-JWT
+PyMySQL
+mysql-connector-python
+sqlalchemy
