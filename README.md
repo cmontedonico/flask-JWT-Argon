@@ -4,7 +4,7 @@ This project is a simple template to perform signup and login with flask on pyth
 
 ## Getting Started
 
-git clone THIS REPO
+git clone git@github.com:cmontedonico/flask-JWT-Argon.git
 
 ### Prerequisites
 
