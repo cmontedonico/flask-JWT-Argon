@@ -19,6 +19,21 @@ Also this project uses MySQL 8.0, so use this
 $ docker pull mysql:8.0
 ```
 
+## DOCKERFILE quick testing
+Create the image called flask-sample
+```
+$ docker build -t flask-sample:latest .
+```
+
+Then run the image
+```
+$ docker run -d -p 8080:8080 flask-sample
+```
+
+Open this URL to get the API response
+http://0.0.0.0:8080
+
+
 ### Installing
 
 Create the VirtualEnv and install dependencies
@@ -42,7 +57,7 @@ $ python3 server.py
 this should start the server on
 http://0.0.0.0:8080
 
-## Deployment
+## Deployment for production
 
 In production i suggest to use NGINX wiht uWSGI as a service.
 
